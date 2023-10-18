@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqi2xr32v0dmb"]
+
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_tkmhq"]
+[ext_resource type="Texture2D" uid="uid://barxsretu72kp" path="res://Rect.png" id="2_y3ps4"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3s084"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_s7lx2"]
+use_colors = true
+mesh = SubResource("ArrayMesh_3s084")
+
+[sub_resource type="Environment" id="Environment_lr4dv"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.23
+glow_bloom = 0.2
+glow_blend_mode = 0
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkmhq")
+
+[node name="back" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y3ps4")
+
+[node name="multiMesh" type="MultiMeshInstance2D" parent="."]
+multimesh = SubResource("MultiMesh_s7lx2")
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lr4dv")
